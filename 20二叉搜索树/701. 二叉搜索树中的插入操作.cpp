@@ -11,14 +11,14 @@
  */
 class Solution {
 public:
-    TreeNode* searchBST(TreeNode* root, int val) {
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
         if(root == nullptr){
-            return nullptr;
+            return new TreeNode(val);
         }
         if(val < root->val){ //二叉树的中序遍历
-            return searchBST(root->left,val);
+            root->left = insertIntoBST(root->left,val);
         }else if(val > root->val){
-            return searchBST(root->right,val);
+            root->right = insertIntoBST(root->right,val);
         }
         return root;
     }
